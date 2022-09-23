@@ -1,0 +1,111 @@
+.sidebar {
+  padding: 2rem 0;
+  padding-left: 3rem;
+}
+
+.logo {
+  animation: moveToRight 0.3s ease-out;
+}
+
+.sidebarItem {
+  position: relative;
+  display: flex;
+  width: 100%;
+  animation: moveToRight 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.marker {
+  width: 3px;
+  height: 3rem;
+  position: absolute;
+  align-self: center;
+  background-color: darkcyan;
+  border-radius: 0.5rem;
+  right: 0;
+  animation: moveToBottom 0.5s ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+}
+
+.title {
+  font-size: 1.5rem;
+  padding-left: 3rem;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.downList {
+  margin-top: 5rem;
+}
+
+.message {
+  padding: 0.5rem 1rem;
+  border-radius: 0.6rem;
+  background-color: orange;
+  color: white;
+  position: absolute;
+  align-self: center;
+  right: 0;
+  margin-right: 2.5rem;
+  font-weight: bold;
+  -webkit-animation: comeScale 0.5s ease-in 1.5s backwards;
+}
+
+@keyframes moveToRight {
+  0% {
+    transform: translate(-20rem);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes moveToBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes comeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.sidebar .sidebarItem:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.sidebar .sidebarItem:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.sidebar .sidebarItem:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.sidebar .sidebarItem:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.sidebar .sidebarItem:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.sidebar .downList .sidebarItem:nth-child(1) {
+  animation-delay: 0.8s;
+}
+.sidebar .downList .sidebarItem:nth-child(2) {
+  animation-delay: 0.9s;
+}

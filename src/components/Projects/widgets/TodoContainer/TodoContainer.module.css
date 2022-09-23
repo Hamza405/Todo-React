@@ -1,0 +1,17 @@
+.container {
+  background-color: rgb(240, 240, 250);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  animation: moveToTop 0.3s ease backwards;
+}
+
+@keyframes moveToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

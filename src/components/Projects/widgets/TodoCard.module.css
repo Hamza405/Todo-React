@@ -1,0 +1,48 @@
+.container {
+  background-color: white;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.7rem;
+  animation: FadeOut 0.7s ease-in 0.3s backwards;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.des {
+  color: gray;
+  font-size: 1.4rem;
+}
+
+.cardFooter {
+  margin: 1rem 0.5rem;
+}
+
+.cardAnimation {
+  -webkit-animation: comeScale 0.5s ease-in-out 0.6s backwards;
+}
+
+@keyframes comeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes FadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

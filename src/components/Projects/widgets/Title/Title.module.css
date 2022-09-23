@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.4rem;
+  animation: comeScale 0.5s ease-out backwards;
+}
+
+.count {
+  font-size: 1.3rem;
+  color: darkcyan;
+  animation: comeScale 0.5s ease-out backwards;
+}
+
+@keyframes comeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

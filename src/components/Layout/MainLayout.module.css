@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  flex: 1;
+}
+.homeLayout {
+  flex: 4;
+  background-color: whitesmoke;
+}

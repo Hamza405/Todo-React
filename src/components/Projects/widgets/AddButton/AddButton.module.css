@@ -1,0 +1,18 @@
+.button {
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+  width: 100%;
+  border: none;
+  background-color: rgb(222, 243, 250);
+  animation: comeScale 0.5s ease-in backwards;
+}
+
+@keyframes comeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

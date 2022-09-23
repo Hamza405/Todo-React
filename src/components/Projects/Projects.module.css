@@ -1,0 +1,39 @@
+.projectLayout {
+  padding: 2rem 5rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  animation: moveToBottom 0.8s ease-out;
+}
+
+.dropdownAnimation {
+  animation: moveToLeft 0.8s ease-in-out;
+}
+
+@keyframes moveToBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveToLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
