@@ -1,17 +1,27 @@
+const colors = ["red", "blue", "green", "yellowgreen", "orange"];
+export const random = () => colors[Math.floor(Math.random() * colors.length)];
+
 export const DUMMY_DATA_TODO = [
   {
     id: "1sst",
     title: "First Task",
     status: "todo",
     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur qui, vero minima enim temporibus est saepe error, odit eligendi necessitatibus ab harum deserunt consequuntur? Odio, doloremque. Cupiditate, fuga. Temporibus, hic.",
-    tags: ["HA", "MA", "SR"],
+    tags: [
+      { tag: "HA", color: random() },
+      { tag: "ML", color: random() },
+      { tag: "SR", color: random() },
+    ],
   },
   {
     id: "2st",
     title: "Second Task",
     status: "todo",
     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-    tags: ["HA", "MA", "SR"],
+    tags: [
+      { tag: "HA", color: random() },
+      { tag: "ML", color: random() },
+    ],
   },
 ];
 
@@ -21,7 +31,7 @@ export const DUMMY_DATA_INPROGRESS = [
     title: "Final Task",
     status: "inProgress",
     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur qui, vero minima enim temporibus est saepe error, odit eligendi necessitatibus ab harum deserunt consequuntur? Odio, doloremque. Cupiditate, fuga. Temporibus, hic.",
-    tags: ["HA", "MA", "SR"],
+    tags: [{ tag: "SR", color: random() }],
   },
 ];
 

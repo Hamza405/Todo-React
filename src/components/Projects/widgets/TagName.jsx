@@ -11,10 +11,8 @@ const tags = {
   zIndex: 100,
 };
 
-const TagName = ({ title }) => {
-  const colors = ["red", "blue", "green"];
-  const random = colors[Math.floor(Math.random() * colors.length)];
-  return <span style={{ backgroundColor: random, ...tags }}>{title}</span>;
+const TagName = ({ title, color }) => {
+  return <span style={{ backgroundColor: color, ...tags }}>{title}</span>;
 };
 
 export default TagName;

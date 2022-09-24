@@ -4,9 +4,35 @@
   width: 100%;
   border: none;
   background-color: rgb(222, 243, 250);
-  animation: comeScale 0.5s ease-in backwards;
+  animation: comeScale 0.25s ease-in backwards;
+  cursor: pointer;
+}
+.button > input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
 }
 
+.button > textarea {
+  outline: none;
+  border: none;
+  width: 90%;
+  background-color: transparent;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid gray;
+}
+
+.button > input:focus {
+  border-bottom: 1px solid gray;
+}
+
+.button > label {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+}
 @keyframes comeScale {
   0% {
     opacity: 0;

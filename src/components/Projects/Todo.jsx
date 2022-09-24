@@ -25,6 +25,24 @@ const getDraggedDom = (draggableId) => {
 const Todo = () => {
   const [placeholderProps, setPlaceholderProps] = useState({});
 
+  const [todoList, setTodoList] = useState(DUMMY_DATA_TODO);
+  const addTodoHandler = (todo) => {
+    setTodoList((prev) => [...prev, todo]);
+  };
+  const removeTodoHandler = (todoId) => {
+    setTodoList((prev) => prev.filter((i) => i.id !== todoId));
+  };
+
+  const [inProgressList, setInProgressList] = useState(DUMMY_DATA_INPROGRESS);
+  const addInProgressList = (todo) => {
+    setInProgressList((prev) => [...prev, todo]);
+  };
+
+  const [completedList, setCompletedList] = useState(DUMMY_DATA_COMPLETED);
+  const addCompletedList = (todo) => {
+    setCompletedList((prev) => [...prev, todo]);
+  };
+
   const handleDragStart = (event) => {
     const draggedDOM = getDraggedDom(event.draggableId);
 
@@ -116,11 +134,11 @@ const Todo = () => {
       >
         <TodoContainer>
           <Title title="todo" count={DUMMY_DATA_TODO.length} />
-          <AddButton />
+          <AddButton onAdd={addTodoHandler} />
           <Droppable droppableId="todo" key="todo" type="MAIN">
             {(provider, snapshot) => (
               <div {...provider.droppableProps} ref={provider.innerRef}>
-                {DUMMY_DATA_TODO.map((item, index) => (
+                {todoList.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provider, snapshot) => (
                       <div
@@ -131,6 +149,8 @@ const Todo = () => {
                         <TodoCard
                           isDrag={snapshot.isDragging}
                           key={item.id}
+                          id={item.id}
+                          onDelete={removeTodoHandler}
                           title={item.title}
                           des={item.des}
                           tags={item.tags}
@@ -146,7 +166,7 @@ const Todo = () => {
         </TodoContainer>
         <TodoContainer>
           <Title title="In Progress" count={DUMMY_DATA_INPROGRESS.length} />
-          <AddButton />
+          <AddButton onAdd={addInProgressList} />
           <Droppable droppableId="inProgress" key="inProgress" type="MAIN">
             {(provider, snapshot) => (
               <div
@@ -154,7 +174,7 @@ const Todo = () => {
                 {...provider.droppableProps}
                 ref={provider.innerRef}
               >
-                {DUMMY_DATA_INPROGRESS.map((item, index) => (
+                {inProgressList.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provider, snapshot) => (
                       <div
@@ -191,7 +211,7 @@ const Todo = () => {
         </TodoContainer>
         <TodoContainer>
           <Title title="Completed" count={DUMMY_DATA_COMPLETED.length} />
-          <AddButton />
+          <AddButton onAdd={addCompletedList} />
           <Droppable droppableId="completed" key="completed" type="MAIN">
             {(provider, snapshot) => (
               <div
@@ -199,7 +219,7 @@ const Todo = () => {
                 {...provider.droppableProps}
                 ref={provider.innerRef}
               >
-                {DUMMY_DATA_COMPLETED.map((item, index) => (
+                {completedList.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provider, snapshot) => (
                       <div
