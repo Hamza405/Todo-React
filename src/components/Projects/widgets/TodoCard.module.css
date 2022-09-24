@@ -6,6 +6,11 @@
   animation: FadeOut 0.7s ease-in 0.3s backwards;
 }
 
+.containerR {
+  transition-duration: 0.5s;
+  transform: rotate(-5deg);
+}
+
 .cardHeader {
   display: flex;
   justify-content: space-between;
@@ -32,6 +37,15 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-15deg);
   }
 }
 

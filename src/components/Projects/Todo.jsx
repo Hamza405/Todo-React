@@ -115,7 +115,7 @@ const Todo = () => {
         onDragUpdate={handleDragUpdate}
       >
         <TodoContainer>
-          <Title title="todo" count="2" />
+          <Title title="todo" count={DUMMY_DATA_TODO.length} />
           <AddButton />
           <Droppable droppableId="todo" key="todo" type="MAIN">
             {(provider, snapshot) => (
@@ -138,6 +138,7 @@ const Todo = () => {
                         ref={provider.innerRef}
                       >
                         <TodoCard
+                          isDrag={snapshot.isDragging}
                           key={item.id}
                           title={item.title}
                           des={item.des}
@@ -153,7 +154,7 @@ const Todo = () => {
           </Droppable>
         </TodoContainer>
         <TodoContainer>
-          <Title title="In Progress" count="2" />
+          <Title title="In Progress" count={DUMMY_DATA_INPROGRESS.length} />
           <AddButton />
           <Droppable droppableId="inProgress" key="inProgress" type="MAIN">
             {(provider, snapshot) => (
@@ -197,7 +198,7 @@ const Todo = () => {
           </Droppable>
         </TodoContainer>
         <TodoContainer>
-          <Title title="Completed" count="2" />
+          <Title title="Completed" count={DUMMY_DATA_COMPLETED.length} />
           <AddButton />
           <Droppable droppableId="completed" key="completed" type="MAIN">
             {(provider, snapshot) => (
