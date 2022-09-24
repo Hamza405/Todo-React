@@ -6,13 +6,28 @@ export const DUMMY_DATA_TODO = [
     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur qui, vero minima enim temporibus est saepe error, odit eligendi necessitatibus ab harum deserunt consequuntur? Odio, doloremque. Cupiditate, fuga. Temporibus, hic.",
     tags: ["HA", "MA", "SR"],
   },
+  {
+    id: "2st",
+    title: "Second Task",
+    status: "todo",
+    des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    tags: ["HA", "MA", "SR"],
+  },
 ];
 
-export const DUMMY_DATA_INPROGRESS = [];
+export const DUMMY_DATA_INPROGRESS = [
+  {
+    id: "4st",
+    title: "Final Task",
+    status: "inProgress",
+    des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur qui, vero minima enim temporibus est saepe error, odit eligendi necessitatibus ab harum deserunt consequuntur? Odio, doloremque. Cupiditate, fuga. Temporibus, hic.",
+    tags: ["HA", "MA", "SR"],
+  },
+];
 
 export const DUMMY_DATA_COMPLETED = [];
 
-export const onDragEnd = (result, column, setColumn) => {
+export const onDragEnd = (result) => {
   console.log(result);
   const { source, destination, draggableId } = result;
   if (!destination) return;
@@ -41,7 +56,7 @@ export const onDragEnd = (result, column, setColumn) => {
     destination.droppableId === "completed"
   ) {
     const task = DUMMY_DATA_TODO.find((i) => i.id === draggableId);
-    task.status = "inProgress";
+    task.status = "completed";
     const temp = DUMMY_DATA_TODO.filter((i) => i.id !== draggableId);
     DUMMY_DATA_TODO.splice(0, DUMMY_DATA_TODO.length, ...temp);
     DUMMY_DATA_COMPLETED.push(task);
