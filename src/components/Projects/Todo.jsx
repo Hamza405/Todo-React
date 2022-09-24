@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { isEmpty } from "lodash";
 
@@ -26,21 +26,29 @@ const Todo = () => {
   const [placeholderProps, setPlaceholderProps] = useState({});
 
   const [todoList, setTodoList] = useState(DUMMY_DATA_TODO);
+  const [completedList, setCompletedList] = useState(DUMMY_DATA_COMPLETED);
+  const [inProgressList, setInProgressList] = useState(DUMMY_DATA_INPROGRESS);
+
   const addTodoHandler = (todo) => {
-    setTodoList((prev) => [...prev, todo]);
+    DUMMY_DATA_TODO.push(todo);
+    setTodoList((prev) => [...DUMMY_DATA_TODO]);
   };
   const removeTodoHandler = (todoId) => {
+    const temp = DUMMY_DATA_TODO.filter((i) => i.id !== todoId);
+    DUMMY_DATA_TODO.splice(0, DUMMY_DATA_TODO.length, ...temp);
     setTodoList((prev) => prev.filter((i) => i.id !== todoId));
   };
 
-  const [inProgressList, setInProgressList] = useState(DUMMY_DATA_INPROGRESS);
-  const addInProgressList = (todo) => {
-    setInProgressList((prev) => [...prev, todo]);
+  const removeInProgressHandler = (todoId) => {
+    const temp = DUMMY_DATA_INPROGRESS.filter((i) => i.id !== todoId);
+    DUMMY_DATA_INPROGRESS.splice(0, DUMMY_DATA_INPROGRESS.length, ...temp);
+    setTodoList((prev) => prev.filter((i) => i.id !== todoId));
   };
 
-  const [completedList, setCompletedList] = useState(DUMMY_DATA_COMPLETED);
-  const addCompletedList = (todo) => {
-    setCompletedList((prev) => [...prev, todo]);
+  const removeCompletedHandler = (todoId) => {
+    const temp = DUMMY_DATA_COMPLETED.filter((i) => i.id !== todoId);
+    DUMMY_DATA_COMPLETED.splice(0, DUMMY_DATA_COMPLETED.length, ...temp);
+    setTodoList((prev) => prev.filter((i) => i.id !== todoId));
   };
 
   const handleDragStart = (event) => {
@@ -79,6 +87,9 @@ const Todo = () => {
       return;
     }
     onDragEnd(result);
+    setTodoList(DUMMY_DATA_TODO);
+    setInProgressList(DUMMY_DATA_INPROGRESS);
+    setCompletedList(DUMMY_DATA_COMPLETED);
   };
 
   const handleDragUpdate = (event) => {
@@ -134,7 +145,7 @@ const Todo = () => {
       >
         <TodoContainer>
           <Title title="todo" count={DUMMY_DATA_TODO.length} />
-          <AddButton onAdd={addTodoHandler} />
+          <AddButton onAdd={addTodoHandler} status="todo" />
           <Droppable droppableId="todo" key="todo" type="MAIN">
             {(provider, snapshot) => (
               <div {...provider.droppableProps} ref={provider.innerRef}>
@@ -166,7 +177,7 @@ const Todo = () => {
         </TodoContainer>
         <TodoContainer>
           <Title title="In Progress" count={DUMMY_DATA_INPROGRESS.length} />
-          <AddButton onAdd={addInProgressList} />
+          <AddButton disable={true} status="inProgress" />
           <Droppable droppableId="inProgress" key="inProgress" type="MAIN">
             {(provider, snapshot) => (
               <div
@@ -185,6 +196,8 @@ const Todo = () => {
                         <TodoCard
                           isDrag={snapshot.isDragging}
                           key={item.id}
+                          id={item.id}
+                          onDelete={removeInProgressHandler}
                           title={item.title}
                           des={item.des}
                           tags={item.tags}
@@ -211,7 +224,7 @@ const Todo = () => {
         </TodoContainer>
         <TodoContainer>
           <Title title="Completed" count={DUMMY_DATA_COMPLETED.length} />
-          <AddButton onAdd={addCompletedList} />
+          <AddButton disable={true} status="completed" />
           <Droppable droppableId="completed" key="completed" type="MAIN">
             {(provider, snapshot) => (
               <div
@@ -230,7 +243,9 @@ const Todo = () => {
                         <TodoCard
                           isDrag={snapshot.isDragging}
                           key={item.id}
+                          id={item.id}
                           title={item.title}
+                          onDelete={removeCompletedHandler}
                           des={item.des}
                           tags={item.tags}
                         />

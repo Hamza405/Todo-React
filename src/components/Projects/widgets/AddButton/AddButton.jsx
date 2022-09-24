@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import style from "./AddButton.module.css";
-import { DUMMY_DATA_TODO, random } from "../../../../services/data";
+import { random } from "../../../../services/data";
 import { IoIosAdd } from "react-icons/io";
 import { AiOutlineMinus } from "react-icons/ai";
 
-const AddButton = ({ onAdd }) => {
+const AddButton = ({ onAdd, status, disable }) => {
   const titleRef = useRef();
   const desRef = useRef();
   const [addMod, setAddMod] = useState(false);
@@ -14,21 +14,29 @@ const AddButton = ({ onAdd }) => {
     const des = desRef.current.value;
     if (title.length === 0 || desRef.length === 0) return;
     onAdd({
-      id: Date.now().toLocaleString(),
+      id: Date.now().toString(),
       title,
-      status: "todo",
+      status: status,
       des,
       tags: [{ tag: "HA", color: random() }],
     });
   };
 
+  if (disable === true) {
+    return (
+      <button style={{ cursor: "auto" }} className={style.button}>
+        <IoIosAdd color="darkcyan" size={20} />
+      </button>
+    );
+  }
+
   return addMod ? (
     <div className={style.button}>
       <label htmlFor="title">Title :</label>
-      <input id="title" className={style.input} />
+      <input ref={titleRef} id="title" className={style.input} />
       <label htmlFor="des">Description :</label>
       <br />
-      <textarea id="des" className={style.input} />
+      <textarea ref={desRef} id="des" className={style.input} />
       <br />
       <button
         onClick={addHandler}
