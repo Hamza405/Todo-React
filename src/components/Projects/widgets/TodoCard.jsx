@@ -5,7 +5,6 @@ import TagName from "./TagName";
 
 const TodoCard = ({ id, title, des, tags, isDrag, onDelete }) => {
   const deleteHandler = () => {
-    console.log(id);
     onDelete(id);
   };
   return (

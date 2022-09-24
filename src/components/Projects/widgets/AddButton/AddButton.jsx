@@ -20,6 +20,7 @@ const AddButton = ({ onAdd, status, disable }) => {
       des,
       tags: [{ tag: "HA", color: random() }],
     });
+    setAddMod(false);
   };
 
   if (disable === true) {

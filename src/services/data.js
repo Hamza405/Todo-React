@@ -38,7 +38,6 @@ export const DUMMY_DATA_INPROGRESS = [
 export const DUMMY_DATA_COMPLETED = [];
 
 export const onDragEnd = (result) => {
-  console.log(result);
   const { source, destination, draggableId } = result;
   if (!destination) return;
   if (source.droppableId === destination.droppableId) return;
