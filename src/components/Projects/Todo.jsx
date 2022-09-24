@@ -119,16 +119,7 @@ const Todo = () => {
           <AddButton />
           <Droppable droppableId="todo" key="todo" type="MAIN">
             {(provider, snapshot) => (
-              <div
-                style={{
-                  minHeight: "500px",
-                  background: snapshot.isDraggingOver
-                    ? "lightblue"
-                    : "transparent",
-                }}
-                {...provider.droppableProps}
-                ref={provider.innerRef}
-              >
+              <div {...provider.droppableProps} ref={provider.innerRef}>
                 {DUMMY_DATA_TODO.map((item, index) => (
                   <Draggable key={item.id} draggableId={item.id} index={index}>
                     {(provider, snapshot) => (
@@ -172,6 +163,7 @@ const Todo = () => {
                         ref={provider.innerRef}
                       >
                         <TodoCard
+                          isDrag={snapshot.isDragging}
                           key={item.id}
                           title={item.title}
                           des={item.des}
@@ -216,6 +208,7 @@ const Todo = () => {
                         ref={provider.innerRef}
                       >
                         <TodoCard
+                          isDrag={snapshot.isDragging}
                           key={item.id}
                           title={item.title}
                           des={item.des}

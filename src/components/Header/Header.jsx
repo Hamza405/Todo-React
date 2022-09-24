@@ -13,18 +13,27 @@ const Header = () => {
         <input placeholder="Search" className={style.searchInput} />
       </div>
       <div className={style.headerActions}>
-        <BsQuestionCircle size={20} className={style.actionAnimation} />
-        <BsBell size={20} className={style.actionAnimation} />
-        <select className={`dropdown ${style.actionAnimation}`}>
-          <option value="fruit">Hamza Al Sheikh</option>
-          <option value="vegetable">Test</option>
-          <option value="meat">Test Test</option>
-        </select>
-        <img
-          src={personImage}
-          alt="image"
-          className={`${style.actionsImage} ${style.actionAnimation}`}
-        />
+        <div className={style.headerAnimation}>
+          <BsQuestionCircle size={20} />
+        </div>
+        <div className={style.headerAnimation}>
+          <BsBell size={20} />
+        </div>
+        <div className={style.headerAnimation}>
+          <select className="dropdown">
+            <option value="fruit">Hamza Al Sheikh</option>
+            <option value="vegetable">Test</option>
+            <option value="meat">Test Test</option>
+          </select>
+        </div>
+
+        <div className={style.headerAnimation}>
+          <img
+            src={personImage}
+            alt="image"
+            className={`${style.actionsImage}`}
+          />
+        </div>
       </div>
     </div>
   );
