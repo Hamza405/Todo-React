@@ -39,7 +39,7 @@ const items = [
 function Sidebar() {
   return (
     <div className={style.sidebar}>
-      <h1 className={style.logo}>.studio</h1>
+      <h1 className={style.logo}>.Todo</h1>
       <SidebarItem icon={<GrHomeRounded size={15} />} title="Overview" />
       <SidebarItem icon={<ImStatsBars2 size={15} />} title="Stat" />
       <SidebarItem
